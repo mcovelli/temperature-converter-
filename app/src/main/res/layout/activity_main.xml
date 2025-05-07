@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id ="@+id/title_textview"
+        android:background="@color/my_blue"
+        android:text="@string/heading"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id ="@+id/conversion_textview"
+        android:text="@string/conversion"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        app:layout_constraintTop_toBottomOf="@id/title_textview"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <RadioGroup
+        android:id="@+id/conversion_radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/conversion_textview"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/celsiusToFahrenheit_radio_button"
+            android:text="@string/celsiusToFahrenheit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/fahrenheitToCelsius_radio_button"
+            android:text="@string/fahrenheitToCelsius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/input_edit_text"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter"
+        android:textSize="20sp"
+        android:inputType="numberDecimal"
+        android:digits="0123456789."
+        android:gravity="center"
+        android:background="@color/background_grey"
+        app:layout_constraintTop_toBottomOf="@id/conversion_radio_group"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/equals_textview"
+        android:text="@string/equals"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/input_edit_text"
+        app:layout_constraintStart_toEndOf="@id/input_edit_text"
+        android:layout_marginStart="8dp"/>
+
+    <TextView
+        android:id="@+id/output_textview"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@color/background_grey"
+        app:layout_constraintTop_toBottomOf="@id/conversion_radio_group"
+        app:layout_constraintBaseline_toBaselineOf="@id/input_edit_text"
+        app:layout_constraintStart_toEndOf="@id/equals_textview"
+        android:layout_marginStart="8dp"/>
+
+    <Button
+        android:id="@+id/convert_button"
+        android:text="@string/convert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_edit_text"
+        android:onClick="convertClick"/>
+
+    <ScrollView
+        android:id="@+id/history_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/convert_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Wrap TextView inside LinearLayout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:padding="8dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
